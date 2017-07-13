@@ -24,14 +24,17 @@ module.exports = {
     devServer: {
         inline: true,
         contentBase: './app',
-        port: 8000
+        port: 3000
     },
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                query: {
+                    presets:[ 'stage-2' ]
+                }
             },
             {
                 test: /foundation\/js\//,
@@ -50,7 +53,7 @@ module.exports = {
         // }]
     },
     output: {
-        filename: 'transformed.js',
+        filename: 'bundle.js',
         path: __dirname + '/build'
     },
     plugins: [ HTMLWebpackPluginConfig, webpackProvidePlugin ]
